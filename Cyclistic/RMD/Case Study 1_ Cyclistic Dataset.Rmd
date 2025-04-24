@@ -1,0 +1,67 @@
+---
+title: 'Case Study: Cyclistic Dataset'
+author: "Rahul Ankoshkar"
+date: "2025-04-24"
+output: html_document
+---
+
+
+
+# Case Study: Cyclistic Bike-Share Analysis
+This case study analyzes bike ride data from 2019 and 2020 for a fictional bike-share company, Cyclistic. The goal is to identify patterns in rider behavior to support a data-driven marketing strategy.
+
+## Load libraries and files to read
+```{r}
+install.packages("tidyverse")
+install.packages("lubridate")
+install.packages("dplyr")
+library(tidyverse)
+library(lubridate)
+library(dplyr)
+
+# Read CSVs
+df_2019 <- read_csv("Cleaned_data_casestudytable1.csv")
+df_2020 <- read_csv("Cleaned_data_casestudytable2.csv")
+```
+## Prep your data
+Use this SQL code in your editor to create cleaned , manipulated data. This is done by subtracting start and end times to find ride length and then counting for total no of trips, along with finding max and mean for the ride lengths.
+```sql
+SELECT
+  member_casual,
+  EXTRACT(DAYOFWEEK FROM start_time) AS day_of_week,
+  COUNT(*) AS total_rides,
+  AVG(TIMESTAMP_DIFF(end_time, start_time, MINUTE)) AS avg_ride_length
+FROM
+  `your-project.your-dataset.Cyclistic_2020`
+GROUP BY
+  member_casual, day_of_week
+ORDER BY
+  member_casual, day_of_week
+```
+
+## The following are all the plots I found useful after summarizing since they are pre-aggregated from SQL
+```{r}
+ggplot(data = df_2019, aes(x = day_of_week, y = total_no_of_rides, fill = usertype))+ geom_col()+ labs(title = "Day of week vs Total no of rides per usertype in 2019", x= "day of week(1-7)", y = "total number of rides")
+
+
+ggplot(data = df_2020, aes(x = day_of_week, y = total_no_of_rides, fill = member_casual))+ geom_col()+ labs(title = "Day of week vs Total no of rides per usertype in 2020", x= "day of week(1-7)", y = "total number of rides")
+
+ggplot(data = df_2019, aes(x = day_of_week, y = mean_ride_length, fill = usertype))+ geom_col()+ labs(title = "Day of week vs Mean ride length per usertype in 2019", x= "day of week(1-7)", y = "Average ride length")
+
+ggplot(data = df_2020, aes(x = day_of_week, y = mean_ride_length, fill = member_casual))+ geom_col()+ labs(title = "Day of week vs Mean ride length per usertype in 2020", x= "day of week(1-7)", y = "Average ride length")
+```
+
+# Key Findings
+
+- Casual riders prefer weekends; members use bikes more consistently across the week.
+- Casual riders have significantly longer average ride durations.
+- Ride length is highest on Sundays, especially among casual riders.
+
+# Business Recommendation
+
+Cyclistic should target casual riders with weekend pass promotions and convert them to members by offering weekday discounts or benefits.
+
+
+
+
+
