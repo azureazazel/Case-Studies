@@ -8,7 +8,7 @@ This project analyzes ride-sharing data from Cyclistic to understand the usage p
 - Casual riders use bikes more often on weekends and have longer ride durations.
 - Members ride more consistently throughout the week but with shorter durations.
 
-[📄 Full Analysis Report (HTML)](./Cyclistic_Case_Study.html)
+[📄 Full Analysis Report (HTML)]([./Cyclistic_Case_Study.html](https://github.com/azureazazel/Case-Studies/blob/main/Cyclistic/RMD/Case-Study-1--Cyclistic-Dataset.html))
 
 ## SQL Summary (BigQuery)
 
