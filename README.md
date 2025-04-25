@@ -26,7 +26,7 @@ The resulting dataset was exported to CSV for further visualization in R.
 [Here is the plot](./Figures/003.png)
 
 ## Full Report
-🧾 [[View the Report inside this webpage](https://azureazazel.github.io/Case-Studies1/)
+🧾 [View the Report inside this webpage](https://azureazazel.github.io/Case-Studies1/)
 
 [Here is the full report](https://github.com/azureazazel/Case-Studies1/blob/main/Case-Study-1--Cyclistic-Dataset.html)
 
